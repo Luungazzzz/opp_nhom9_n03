@@ -5,17 +5,17 @@
 
 
 <h2>Biểu đồ Sequence diagram</h2>
-![sequence diagram](https://github.com/user-attachments/assets/aa55128e-9178-4cb6-bb03-c0941cc7254d).
 
-
-
+![sequence diagram](https://github.com/user-attachments/assets/719e9722-34ee-4d31-9343-74a49ec612ca).
 
 
 ![themsanpham](https://github.com/user-attachments/assets/80c0b62c-9c5a-479d-8c59-23a15329c333).
 
 
-
 ![xoathongtin](https://github.com/user-attachments/assets/5a5a7bce-eb96-4cf7-b94e-0ff9d954a97e).
+
+
+![hoadon](https://github.com/user-attachments/assets/924ab84e-7579-41ca-a020-17bc41cc1a35)
 
 
 

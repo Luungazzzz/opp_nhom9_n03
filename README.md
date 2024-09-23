@@ -5,8 +5,9 @@
 
 
 <h2>Biểu đồ Sequence diagram</h2>
-
-![SequenceDiagram](https://github.com/user-attachments/assets/6efa7651-5ea2-4362-9d2e-6e6daac58b67)
+![sequence diagram](https://github.com/user-attachments/assets/aa55128e-9178-4cb6-bb03-c0941cc7254d).
+![themsanpham](https://github.com/user-attachments/assets/80c0b62c-9c5a-479d-8c59-23a15329c333).
+![xoathongtin](https://github.com/user-attachments/assets/5a5a7bce-eb96-4cf7-b94e-0ff9d954a97e).
 
 <h2>Biểu đồ  State diagram</h2>
 

@@ -23,5 +23,4 @@
 
 ![Ảnh chụp màn hình 2024-09-23 114041](https://github.com/user-attachments/assets/1c48a900-947d-4586-8074-834a8a2316ae)
 
-<h2>Biểu đồ  Activity diagram</h2>
 

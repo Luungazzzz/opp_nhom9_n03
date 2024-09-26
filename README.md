@@ -17,6 +17,8 @@
 
 ![hoadon](https://github.com/user-attachments/assets/924ab84e-7579-41ca-a020-17bc41cc1a35)
 
+<h1> bài tập hôm nay em xin phép về nhà up ạ vì em không mang theo lap ạ </h1>
+
 
 
 

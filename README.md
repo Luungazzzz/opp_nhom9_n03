@@ -3,9 +3,9 @@
 Đây là dự án quản lý điện thoại giúp tối ưu hiệu quả quản lý của cửa hàng một cách hiệu quả 
 
 YÊU CẦU: Cửa hàng quản lý điện thoại có các chức năng
-+ Quản lý Sản Phẩm
-+ Quản lý Khách Hàng
-+ Quản lý Hóa Đơn
++ Quản lý Sản Phẩm: Thêm, Sửa, Xóa, Liệt Kê
++ Quản lý Khách Hàng: Thêm, Sửa, Xóa, Liệt Kê
++ Quản lý Hóa Đơn: Thêm, Sửa, Xóa, Liệt Kê
   
 Mỗi sản phẩm điện thoại có các thông tin : tên, mô tả, giá bán, số lượng tồn,..
 

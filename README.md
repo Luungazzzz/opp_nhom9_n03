@@ -27,16 +27,34 @@ Các thông tin của khách hàng, sản phẩm, hóa đơn được lưu trữ
 
 <h2>Biểu đồ Sequence diagram</h2>
 
-![sequence diagram](https://github.com/user-attachments/assets/719e9722-34ee-4d31-9343-74a49ec612ca).
+![sequence diagram](https://github.com/user-attachments/assets/719e9722-34ee-4d31-9343-74a49ec612ca)
+
+Chức năng thêm sản phẩm
+![IMG_6153](https://github.com/user-attachments/assets/629de7f0-8bba-44ae-882c-4434ab840147)
 
 
-![themsanpham](https://github.com/user-attachments/assets/80c0b62c-9c5a-479d-8c59-23a15329c333).
+Chức năng xoá sản phẩm
+![IMG_6156](https://github.com/user-attachments/assets/5e34ebab-fa94-444a-a764-46ac53bc3060)
+
+Chức năng thêm khách hàng
+
+![IMG_6152](https://github.com/user-attachments/assets/6a09f46d-e26f-48f6-a684-5d4322e458c4)
+
+Chức năng sửa khách hàng
+![IMG_6150](https://github.com/user-attachments/assets/a9c88254-6707-4cfb-ae3a-40f591b756a8)
+
+Chức năng tạo đơn hàng mới
+![IMG_6151](https://github.com/user-attachments/assets/76e9746f-3ae4-4d73-a0a6-93b31cebed55)
+
+Chức năng chỉnh sửa hoá đơn
+
+![IMG_6149](https://github.com/user-attachments/assets/ab203a23-30eb-4c94-a9ef-3c2597e9f758)
+
+Chức năng xoá hoá đơn
+![IMG_6155](https://github.com/user-attachments/assets/e6b44bcb-2601-433b-8926-7d813ba400c2)
 
 
-![xoathongtin](https://github.com/user-attachments/assets/5a5a7bce-eb96-4cf7-b94e-0ff9d954a97e).
 
-
-![hoadon](https://github.com/user-attachments/assets/924ab84e-7579-41ca-a020-17bc41cc1a35)
 
 <h1> Giao diện </h1>
 <h2>Giao diện đầu tiên</h2>

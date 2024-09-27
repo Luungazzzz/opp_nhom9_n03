@@ -1,4 +1,25 @@
+<h1>Hệ Thống Quản Lý Cửa Hàng Điện Thoại</h1>
+<h2>Giới Thiệu Dự Án</h2>
+Đây là dự án quản lý điện thoại giúp tối ưu hiệu quả quản lý của cửa hàng một cách hiệu quả 
+
+YÊU CẦU: Cửa hàng quản lý điện thoại có các chức năng
++ Quản lý Sản Phẩm
++ Quản lý Khách Hàng
++ Quản lý Hóa Đơn
+  
+Mỗi sản phẩm điện thoại có các thông tin : tên, mô tả, giá bán, số lượng tồn,..
+
+Mỗi khách hàng có thể nhiều đơn hàng. Hóa đơn gồm có 1 hoặc nhiều sản phẩm với đơn giá, số lượng, tổng thuế, tổng tiền,...
+
+Các thông tin của khách hàng, sản phẩm, hóa đơn được lưu trữ ra file nhị phân
+
+<h2> Thành Viên Nhóm </h2>
+
++ Lê Thị Dương
++ Lưu Thị Ngà
+
 <h1>Sơ đồ cấu trúc và sơ đồ thuật toán </h1>
+
 <h2>Biểu đồ Class digram </h2>
 
 ![Ảnh chụp màn hình 2024-09-22 170849](https://github.com/user-attachments/assets/73442e24-d9fa-42f9-8a60-2a5873a8e72d)

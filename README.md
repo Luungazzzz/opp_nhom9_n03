@@ -41,7 +41,8 @@ Các thông tin của khách hàng, sản phẩm, hóa đơn được lưu trữ
 <h1> Giao diện </h1>
 <h2>Giao diện đầu tiên</h2>
 
-![Ảnh chụp màn hình 2024-09-27 094433](https://github.com/user-attachments/assets/2da7afed-230d-4c05-a161-7d21dba92d31) 
+![Ảnh chụp màn hình 2024-09-27 103522](https://github.com/user-attachments/assets/afd54e05-5731-49f4-8c59-7f4ad471607a)
+
 
 <h2>Giao diện chức năng chính</h2>
 

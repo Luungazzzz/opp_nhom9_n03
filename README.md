@@ -17,8 +17,14 @@
 
 ![hoadon](https://github.com/user-attachments/assets/924ab84e-7579-41ca-a020-17bc41cc1a35)
 
-<h1> bài tập hôm nay em xin phép về nhà up ạ vì em không mang theo lap ạ </h1>
+<h1> Giao diện </h1>
+<h2>Giao diện đầu tiên</h2>
 
+![Ảnh chụp màn hình 2024-09-27 094433](https://github.com/user-attachments/assets/2da7afed-230d-4c05-a161-7d21dba92d31) 
+
+<h2>Giao diện chức năng chính</h2>
+
+![image](https://github.com/user-attachments/assets/63b08251-f4df-4023-ad9c-de03872df31f) 
 
 
 

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.finalproj.Controller.InvoiceController">
+    <children>
+        <Label layoutX="321.0" layoutY="22.0" text="Quản Lý Hóa Đơn" textAlignment="CENTER" textFill="#246479">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <!-- Bảng hiển thị thông tin hóa đơn -->
+        <TableView fx:id="invoiceTable" layoutX="50.0" layoutY="60.0" prefHeight="300.0" prefWidth="700.0">
+            <columns>
+                <TableColumn fx:id="colInvoiceId" prefWidth="122.39996337890625" text="Mã Hóa đơn" />
+                <TableColumn fx:id="colCustomerId" prefWidth="136.0" text="Mã Khách hàng" />
+                <TableColumn fx:id="colProductId" prefWidth="162.39996337890625" text="Mã Sản phẩm" />
+                <TableColumn fx:id="colQuantity" prefWidth="141.5999755859375" text="Số lượng" />
+                <TableColumn fx:id="colTotalPrice" prefWidth="140.0001220703125" text="Tổng tiền" />
+            </columns>
+        </TableView>
+        <!-- Nút để thêm, sửa, xóa hóa đơn -->
+        <Button layoutX="100.0" layoutY="400.0" mnemonicParsing="false" onAction="#handleAddInvoice" prefWidth="100.0" text="Thêm" />
+        <Button layoutX="271.0" layoutY="400.0" mnemonicParsing="false" onAction="#handleEditInvoice" prefWidth="100.0" text="Sửa" />
+        <Button layoutX="607.0" layoutY="400.0" mnemonicParsing="false" onAction="#handleDeleteInvoice" prefWidth="100.0" text="Xóa" />
+        <!-- Nút để xuất hóa đơn -->
+        <Button layoutX="436.0" layoutY="400.0" mnemonicParsing="false" onAction="#handleExportInvoice" prefWidth="100.0" text="Xuất Hóa Đơn" />
+    </children>
+</AnchorPane>

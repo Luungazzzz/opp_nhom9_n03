@@ -59,12 +59,14 @@ Chức năng xoá hoá đơn
 <h1> Giao diện </h1>
 <h2>Giao diện đầu tiên</h2>
 
-![Ảnh chụp màn hình 2024-09-27 103522](https://github.com/user-attachments/assets/afd54e05-5731-49f4-8c59-7f4ad471607a)
+![image](https://github.com/user-attachments/assets/479d8f3b-233e-4458-926d-498983a10828)
+
 
 
 <h2>Giao diện chức năng chính</h2>
 
-![image](https://github.com/user-attachments/assets/63b08251-f4df-4023-ad9c-de03872df31f) 
+![image](https://github.com/user-attachments/assets/a0b3a034-c4c2-4475-b028-c1734f917350)
+
 
 
 

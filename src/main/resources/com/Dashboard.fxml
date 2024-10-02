@@ -6,11 +6,11 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="366.0" prefWidth="522.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.finalproj.Controller.DashboardController">
-    <Label layoutX="177.0" layoutY="27.0" prefHeight="68.0" prefWidth="330.0" text="Quản Lý Cửa Hàng" textAlignment="CENTER" textFill="#5473c9" wrapText="true">
+    <Label layoutX="96.0" layoutY="24.0" prefHeight="68.0" prefWidth="330.0" text="Chào mừng đến với trang Quản Lý Cửa Hàng" textAlignment="CENTER" textFill="#5473c9" wrapText="true">
       <font>
          <Font size="20.0" />
       </font></Label>
-    <Button fx:id="manageCustomerBtn" layoutX="200.0" layoutY="102.0" onAction="#handleManageCustomer" prefHeight="26.0" prefWidth="122.0" text="Quản lý khách hàng" />
+    <Button fx:id="manageCustomerBtn" layoutX="199.0" layoutY="104.0" onAction="#handleManageCustomer" prefHeight="26.0" prefWidth="122.0" text="Quản lý khách hàng" />
     <Button fx:id="manageProductBtn" layoutX="199.0" layoutY="156.0" onAction="#handleManageProduct" prefHeight="26.0" prefWidth="122.0" text="Quản lý sản phẩm" />
     <Button fx:id="manageInvoiceBtn" layoutX="199.0" layoutY="210.0" onAction="#handleManageInvoice" prefHeight="26.0" prefWidth="122.0" text="Quản lý hóa đơn" />
     <Button fx:id="logoutBtn" layoutX="199.0" layoutY="266.0" onAction="#handleLogout" prefHeight="26.0" prefWidth="122.0" text="Đăng xuất" />

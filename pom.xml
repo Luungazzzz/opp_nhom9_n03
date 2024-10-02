@@ -8,14 +8,15 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
+        <java.version>21</java.version> <!-- Sử dụng JDK 21 -->
         <javafx.version>22</javafx.version>
-        <junit.version>5.10.2</junit.version>
+        <junit.version>5.7.1</junit.version> <!-- Phiên bản JUnit phù hợp -->
     </properties>
 
     <repositories>
         <repository>
             <id>openjfx</id>
-            <url>https://maven-central.storage.googleapis.com/</url>
+            <url>https://repo.maven.apache.org/maven2</url>
         </repository>
     </repositories>
 
@@ -42,6 +43,24 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.39</version> <!-- Bạn có thể thay đổi phiên bản phù hợp -->
+        </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version> <!-- Đảm bảo đúng phiên bản Maven Compiler Plugin -->
+                <configuration>
+                    <source>21</source> <!-- Sử dụng JDK 21 -->
+                    <target>21</target> <!-- Sử dụng JDK 21 -->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

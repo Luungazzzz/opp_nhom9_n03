@@ -72,6 +72,9 @@ Các thông tin của khách hàng, sản phẩm, hóa đơn được lưu trữ
 
 ![image](https://github.com/user-attachments/assets/a0b3a034-c4c2-4475-b028-c1734f917350)
 
+<h2>Dữ liệu login</h2>
+
+![image](https://github.com/user-attachments/assets/3c0da441-b469-437e-9c0d-756e25e0fc5a)
 
 
 

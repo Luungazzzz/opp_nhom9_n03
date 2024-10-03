@@ -29,28 +29,33 @@ Các thông tin của khách hàng, sản phẩm, hóa đơn được lưu trữ
 
 ![sequence diagram](https://github.com/user-attachments/assets/719e9722-34ee-4d31-9343-74a49ec612ca)
 
-Chức năng thêm sản phẩm
+<h3>Chức năng thêm sản phẩm</h3>
+
 ![IMG_6153](https://github.com/user-attachments/assets/629de7f0-8bba-44ae-882c-4434ab840147)
 
 
-Chức năng xoá sản phẩm
+<h3>Chức năng xoá sản phẩm</h3>
+
 ![IMG_6156](https://github.com/user-attachments/assets/5e34ebab-fa94-444a-a764-46ac53bc3060)
 
-Chức năng thêm khách hàng
+<h3>Chức năng thêm khách hàng</h3>
 
 ![IMG_6152](https://github.com/user-attachments/assets/6a09f46d-e26f-48f6-a684-5d4322e458c4)
 
-Chức năng sửa khách hàng
+<h3>Chức năng sửa khách hàng</h3>
+
 ![IMG_6150](https://github.com/user-attachments/assets/a9c88254-6707-4cfb-ae3a-40f591b756a8)
 
-Chức năng tạo đơn hàng mới
+<h3>Chức năng tạo đơn hàng mới</h3>
+
 ![IMG_6151](https://github.com/user-attachments/assets/76e9746f-3ae4-4d73-a0a6-93b31cebed55)
 
-Chức năng chỉnh sửa hoá đơn
+<h3>Chức năng chỉnh sửa hoá đơn</h3>
 
 ![IMG_6149](https://github.com/user-attachments/assets/ab203a23-30eb-4c94-a9ef-3c2597e9f758)
 
-Chức năng xoá hoá đơn
+<h3>Chức năng xoá hoá đơn</h3>
+
 ![IMG_6155](https://github.com/user-attachments/assets/e6b44bcb-2601-433b-8926-7d813ba400c2)
 
 

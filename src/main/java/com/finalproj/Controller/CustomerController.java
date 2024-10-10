@@ -14,7 +14,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -37,7 +36,7 @@ public class CustomerController {
     private TableColumn<Customer, String> colCustomerName, colCustomerAddress, colCustomerPhone, colCustomerEmail;
 
     @FXML
-    private Button addCustomerBtn, editCustomerBtn, deleteCustomerBtn;
+    private Button addCustomerBtn, editCustomerBtn, deleteCustomerBtn, backButton;
 
     private ObservableList<Customer> customerList;
 
@@ -55,7 +54,7 @@ public class CustomerController {
     private void loadCustomers() {
         customerList.clear(); // Xóa danh sách cũ trước khi tải mới
         String query = "SELECT * FROM customers";
-        try (Connection conn = Database.connect();
+        try (Connection conn = Database.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query);
              ResultSet rs = stmt.executeQuery()) {
 
@@ -66,6 +65,18 @@ public class CustomerController {
             customerTable.setItems(customerList);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    // Hiển thị thông tin khách hàng đã chọn lên các trường nhập liệu
+    @FXML
+    private void showCustomerDetails() {
+        Customer selectedCustomer = customerTable.getSelectionModel().getSelectedItem();
+        if (selectedCustomer != null) {
+            nameField.setText(selectedCustomer.getName());
+            addressField.setText(selectedCustomer.getAddress());
+            phoneNumberField.setText(selectedCustomer.getPhoneNumber());
+            emailField.setText(selectedCustomer.getEmail());
         }
     }
 
@@ -90,7 +101,7 @@ public class CustomerController {
         }
 
         String query = "INSERT INTO customers (name, address, phone_number, email) VALUES (?, ?, ?, ?)";
-        try (Connection conn = Database.connect();
+        try (Connection conn = Database.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, name);
             stmt.setString(2, address);
@@ -104,7 +115,7 @@ public class CustomerController {
         }
     }
 
-    // Xử lý sửa khách hàng
+    // Xử lý lưu thông tin khách hàng sau khi chỉnh sửa
     @FXML
     private void handleEditCustomer() {
         Customer selectedCustomer = customerTable.getSelectionModel().getSelectedItem();
@@ -114,7 +125,7 @@ public class CustomerController {
             String phone = phoneNumberField.getText();
             String email = emailField.getText();
 
-            // Kiểm tra email có đuôi @gmail.com
+            // Kiểm tra email có hợp lệ hay không
             if (!isValidEmail(email)) {
                 showAlert("Lỗi", "Email phải có đuôi @gmail.com.");
                 return;
@@ -127,7 +138,7 @@ public class CustomerController {
             }
 
             String query = "UPDATE customers SET name = ?, address = ?, phone_number = ?, email = ? WHERE id = ?";
-            try (Connection conn = Database.connect();
+            try (Connection conn = Database.getConnection();
                  PreparedStatement stmt = conn.prepareStatement(query)) {
                 stmt.setString(1, name);
                 stmt.setString(2, address);
@@ -137,7 +148,7 @@ public class CustomerController {
                 stmt.executeUpdate();
 
                 showAlert("Thành công", "Cập nhật thông tin khách hàng thành công!");
-                clearFields(); // Xóa dữ liệu trong các trường nhập liệu
+                clearFields(); // Xóa dữ liệu sau khi cập nhật thành công
                 loadCustomers(); // Tải lại danh sách khách hàng
             } catch (Exception e) {
                 e.printStackTrace();
@@ -153,7 +164,7 @@ public class CustomerController {
         Customer selectedCustomer = customerTable.getSelectionModel().getSelectedItem();
         if (selectedCustomer != null) {
             String query = "DELETE FROM customers WHERE id = ?";
-            try (Connection conn = Database.connect();
+            try (Connection conn = Database.getConnection();
                  PreparedStatement stmt = conn.prepareStatement(query)) {
                 stmt.setInt(1, selectedCustomer.getId());
                 stmt.executeUpdate();
@@ -168,6 +179,26 @@ public class CustomerController {
         }
     }
 
+    // Xử lý quay lại màn hình chính
+    @FXML
+    private void handleBackToDashboard(ActionEvent event) {
+        switchScene(event, "/com/Dashboard.fxml"); // Đường dẫn đến tệp FXML của Dashboard
+    }
+
+    // Phương thức chuyển cảnh giao diện
+    private void switchScene(ActionEvent event, String fxmlFilePath) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource(fxmlFilePath));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Lỗi", "Không thể chuyển cảnh: " + e.getMessage());
+        }
+    }
+
     // Kiểm tra email có đuôi @gmail.com
     private boolean isValidEmail(String email) {
         return email.endsWith("@gmail.com");
@@ -178,28 +209,9 @@ public class CustomerController {
         return phone.matches("\\d{10}");
     }
 
-    // Xử lý quay lại dashboard
-    @FXML
-    private void handleBackToDashboard(ActionEvent event) {
-        switchScene(event, "/com/Dashboard.fxml");
-    }
-
-    // Thay đổi cảnh giao diện
-    private void switchScene(ActionEvent event, String fxmlFilePath) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource(fxmlFilePath));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     // Hiển thị thông báo
     private void showAlert(String title, String content) {
-        Alert alert = new Alert(AlertType.INFORMATION);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setContentText(content);
         alert.showAndWait();

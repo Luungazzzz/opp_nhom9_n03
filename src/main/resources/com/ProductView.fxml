@@ -8,84 +8,41 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.finalproj.Controller.ProductController">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.finalproj.Controller.ProductController">
     <children>
-        <Label layoutX="392.0" layoutY="24.0" text="Quản Lý Sản Phẩm" textFill="#2E8B57">
+        <Label layoutX="278.0" layoutY="16.0" prefHeight="39.0" prefWidth="215.0" text="Quản Lý Sản Phẩm" textFill="#2E8B57">
             <font>
                 <Font size="24.0" />
             </font>
         </Label>
 
         <!-- Bảng hiển thị thông tin sản phẩm -->
-        <TableView fx:id="productTable" layoutX="50.0" layoutY="77.0" prefHeight="282.0" prefWidth="883.0">
+        <TableView fx:id="productTable" layoutX="50.0" layoutY="77.0" prefHeight="282.0" prefWidth="700.0">
             <columns>
-                <TableColumn fx:id="colProductId" prefWidth="70.0" text="Mã SP" />
-                <TableColumn fx:id="colBrand" prefWidth="94.39999389648438" text="Hãng" />
-                <TableColumn fx:id="colModel" prefWidth="98.39993286132812" text="Mẫu" />
-                <TableColumn fx:id="colOS" prefWidth="86.39996337890625" text="HĐH" />
-                <TableColumn fx:id="colScreenSize" prefWidth="96.79998779296875" text="Kích Thước Màn Hình" />
-                <TableColumn fx:id="colCPU" prefWidth="82.39996337890625" text="CPU" />
-                <TableColumn fx:id="colRAM" prefWidth="76.0" text="RAM (GB)" />
-                <TableColumn fx:id="colStorage" prefWidth="100.0" text="Bộ Nhớ (GB)" />
-                <TableColumn fx:id="colRearCamera" prefWidth="100.0" text="Camera Sau" />
-                <TableColumn fx:id="colFrontCamera" prefWidth="100.0" text="Camera Trước" />
-                <TableColumn fx:id="colBattery" prefWidth="70.0" text="Pin" />
-                <TableColumn fx:id="colCharging" prefWidth="80.0" text="Sạc" />
-                <TableColumn fx:id="colConnectivity" prefWidth="100.0" text="Kết Nối" />
-                <TableColumn fx:id="colDesign" prefWidth="100.0" text="Thiết Kế" />
-                <TableColumn fx:id="colPrice" prefWidth="100.0" text="Giá (VND)" />
+                <TableColumn fx:id="colProductId" prefWidth="103.20004272460938" text="Mã Sản Phẩm" />
+                <TableColumn fx:id="colBrand" prefWidth="131.19998168945312" text="Hãng" />
+                <TableColumn fx:id="colModel" prefWidth="156.0" text="Mẫu" />
+                <TableColumn fx:id="colRAM" prefWidth="140.00006103515625" text="RAM (GB)" />
+                <TableColumn fx:id="colPrice" prefWidth="171.20001220703125" text="Giá (VND)" />
             </columns>
         </TableView>
 
-        <!-- Các trường nhập liệu để thêm hoặc sửa sản phẩm -->
-        <Label layoutX="50.0" layoutY="400.0" text="Mã SP:" />
-        <TextField fx:id="productIdField" layoutX="150.0" layoutY="400.0" prefWidth="150.0" />
+        <Label layoutX="75.0" layoutY="391.0" text="Hãng:" />
+        <TextField fx:id="brandField" layoutX="148.0" layoutY="387.0" prefWidth="150.0" />
 
-        <Label layoutX="50.0" layoutY="430.0" text="Hãng:" />
-        <TextField fx:id="brandField" layoutX="150.0" layoutY="430.0" prefWidth="150.0" />
+        <Label layoutX="77.0" layoutY="439.0" text="Mẫu:" />
+        <TextField fx:id="modelField" layoutX="148.0" layoutY="430.0" prefWidth="150.0" />
 
-        <Label layoutX="50.0" layoutY="460.0" text="Mẫu:" />
-        <TextField fx:id="modelField" layoutX="150.0" layoutY="460.0" prefWidth="150.0" />
+        <Label layoutX="351.0" layoutY="391.0" text="RAM (GB):" />
+        <TextField fx:id="ramField" layoutX="450.0" layoutY="387.0" prefWidth="150.0" />
 
-        <Label layoutX="50.0" layoutY="490.0" text="HĐH:" />
-        <TextField fx:id="osField" layoutX="150.0" layoutY="490.0" prefWidth="150.0" />
-
-        <Label layoutX="50.0" layoutY="520.0" text="Kích Thước Màn Hình:" />
-        <TextField fx:id="screenSizeField" layoutX="150.0" layoutY="520.0" prefWidth="150.0" />
-
-        <Label layoutX="350.0" layoutY="400.0" text="CPU:" />
-        <TextField fx:id="cpuField" layoutX="450.0" layoutY="400.0" prefWidth="150.0" />
-
-        <Label layoutX="350.0" layoutY="430.0" text="RAM (GB):" />
-        <TextField fx:id="ramField" layoutX="450.0" layoutY="430.0" prefWidth="150.0" />
-
-        <Label layoutX="350.0" layoutY="460.0" text="Bộ Nhớ (GB):" />
-        <TextField fx:id="storageField" layoutX="450.0" layoutY="460.0" prefWidth="150.0" />
-
-        <Label layoutX="350.0" layoutY="490.0" text="Camera Sau:" />
-        <TextField fx:id="rearCameraField" layoutX="450.0" layoutY="490.0" prefWidth="150.0" />
-
-        <Label layoutX="350.0" layoutY="520.0" text="Camera Trước:" />
-        <TextField fx:id="frontCameraField" layoutX="450.0" layoutY="520.0" prefWidth="150.0" />
-
-        <Label layoutX="650.0" layoutY="400.0" text="Pin:" />
-        <TextField fx:id="batteryField" layoutX="750.0" layoutY="400.0" prefWidth="150.0" />
-
-        <Label layoutX="650.0" layoutY="430.0" text="Sạc:" />
-        <TextField fx:id="chargingField" layoutX="750.0" layoutY="430.0" prefWidth="150.0" />
-
-        <Label layoutX="650.0" layoutY="460.0" text="Kết Nối:" />
-        <TextField fx:id="connectivityField" layoutX="750.0" layoutY="460.0" prefWidth="150.0" />
-
-        <Label layoutX="650.0" layoutY="490.0" text="Thiết Kế:" />
-        <TextField fx:id="designField" layoutX="750.0" layoutY="490.0" prefWidth="150.0" />
-
-        <Label layoutX="650.0" layoutY="520.0" text="Giá (VND):" />
-        <TextField fx:id="priceField" layoutX="750.0" layoutY="520.0" prefWidth="150.0" />
+        <Label layoutX="350.0" layoutY="430.0" text="Giá (VND):" />
+        <TextField fx:id="priceField" layoutX="450.0" layoutY="430.0" prefWidth="150.0" />
 
         <!-- Nút để thêm, sửa, xóa sản phẩm -->
-        <Button layoutX="200.0" layoutY="580.0" mnemonicParsing="false" onAction="#handleAddProduct" prefWidth="100.0" text="Thêm" />
-        <Button layoutX="400.0" layoutY="580.0" mnemonicParsing="false" onAction="#handleEditProduct" prefWidth="100.0" text="Sửa" />
-        <Button layoutX="600.0" layoutY="580.0" mnemonicParsing="false" onAction="#handleDeleteProduct" prefWidth="100.0" text="Xóa" />
+        <Button layoutX="157.0" layoutY="478.0" mnemonicParsing="false" onAction="#handleAddProduct" prefWidth="100.0" text="Thêm" />
+        <Button layoutX="301.0" layoutY="478.0" mnemonicParsing="false" onAction="#handleEditProduct" prefWidth="100.0" text="Sửa" />
+        <Button layoutX="467.0" layoutY="477.0" mnemonicParsing="false" onAction="#handleDeleteProduct" prefWidth="100.0" text="Xóa" />
+        <Button layoutX="670.0" layoutY="36.0" mnemonicParsing="false" onAction="#handleBackToDashboard" prefWidth="100.0" text="Quay lại" />
     </children>
 </AnchorPane>

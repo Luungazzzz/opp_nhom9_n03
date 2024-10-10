@@ -13,13 +13,6 @@
         <junit.version>5.7.1</junit.version> <!-- Phiên bản JUnit phù hợp -->
     </properties>
 
-    <repositories>
-        <repository>
-            <id>openjfx</id>
-            <url>https://repo.maven.apache.org/maven2</url>
-        </repository>
-    </repositories>
-
     <dependencies>
         <dependency>
             <groupId>org.openjfx</groupId>
@@ -46,8 +39,9 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.39</version> <!-- Bạn có thể thay đổi phiên bản phù hợp -->
+            <version>8.0.32</version>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -55,10 +49,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version> <!-- Đảm bảo đúng phiên bản Maven Compiler Plugin -->
+                <version>3.8.1</version>
                 <configuration>
-                    <source>21</source> <!-- Sử dụng JDK 21 -->
-                    <target>21</target> <!-- Sử dụng JDK 21 -->
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
         </plugins>

@@ -15,21 +15,12 @@ CREATE TABLE customers (
 );
 
 CREATE TABLE products (
-    product_id VARCHAR(50) PRIMARY KEY,
+    product_id INT AUTO_INCREMENT PRIMARY KEY,
     brand VARCHAR(100),
     model VARCHAR(100),
-    operating_system VARCHAR(100),
-    screen_size VARCHAR(50),
-    cpu VARCHAR(100),
     ram INT,
-    storage_capacity INT,
-    rear_camera VARCHAR(100),
-    front_camera VARCHAR(100),
-    battery VARCHAR(50),
-    charging_technology VARCHAR(100),
-    connectivity VARCHAR(100),
-    design_and_material VARCHAR(100),
-    price DECIMAL(10, 2)
+    price DECIMAL(20, 2)
+
 );
 
 CREATE TABLE invoices (

@@ -1,104 +1,51 @@
 package com.finalproj.Model;
 
-import java.util.UUID;
+import javafx.beans.property.*;
 
 public class Product {
-    private UUID productId;
-    private String brand;
-    private String model;
-    private String operatingSystem;
-    private String screenSize;
-    private String cpu;
-    private int ram;
-    private int storageCapacity;
-    private String rearCamera;
-    private String frontCamera;
-    private String battery;
-    private String chargingTechnology;
-    private String connectivity;
-    private String designAndMaterial;
-    private double price;
+    private IntegerProperty productId;
+    private StringProperty brand;
+    private StringProperty model;
+    private IntegerProperty ram;
+    private DoubleProperty price;
 
-    // Constructor
-    public Product(UUID productId, String brand, String model, String operatingSystem, String screenSize,
-                   String cpu, int ram, int storageCapacity, String rearCamera, String frontCamera,
-                   String battery, String chargingTechnology, String connectivity, String designAndMaterial,
-                   double price) {
-        this.productId = productId;
-        this.brand = brand;
-        this.model = model;
-        this.operatingSystem = operatingSystem;
-        this.screenSize = screenSize;
-        this.cpu = cpu;
-        this.ram = ram;
-        this.storageCapacity = storageCapacity;
-        this.rearCamera = rearCamera;
-        this.frontCamera = frontCamera;
-        this.battery = battery;
-        this.chargingTechnology = chargingTechnology;
-        this.connectivity = connectivity;
-        this.designAndMaterial = designAndMaterial;
-        this.price = price;
+    // Constructor không cần productId (do CSDL sẽ tự tạo ID)
+    public Product(String brand, String model, int ram, double price) {
+        this.productId = new SimpleIntegerProperty();  // ID sẽ được lấy từ CSDL khi thêm vào
+        this.brand = new SimpleStringProperty(brand);
+        this.model = new SimpleStringProperty(model);
+        this.ram = new SimpleIntegerProperty(ram);
+        this.price = new SimpleDoubleProperty(price);
     }
 
-    // Getters
-    public UUID getProductId() {
-        return productId;
+    // Constructor đầy đủ khi lấy dữ liệu từ CSDL (bao gồm productId)
+    public Product(int productId, String brand, String model, int ram, double price) {
+        this.productId = new SimpleIntegerProperty(productId);
+        this.brand = new SimpleStringProperty(brand);
+        this.model = new SimpleStringProperty(model);
+        this.ram = new SimpleIntegerProperty(ram);
+        this.price = new SimpleDoubleProperty(price);
     }
 
-    public String getBrand() {
-        return brand;
-    }
+    // Getters and Property methods
+    public int getProductId() { return productId.get(); }
+    public IntegerProperty productIdProperty() { return productId; }
 
-    public String getModel() {
-        return model;
-    }
+    public String getBrand() { return brand.get(); }
+    public StringProperty brandProperty() { return brand; }
 
-    public String getOperatingSystem() {
-        return operatingSystem;
-    }
+    public String getModel() { return model.get(); }
+    public StringProperty modelProperty() { return model; }
 
-    public String getScreenSize() {
-        return screenSize;
-    }
+    public int getRam() { return ram.get(); }
+    public IntegerProperty ramProperty() { return ram; }
 
-    public String getCpu() {
-        return cpu;
-    }
+    public double getPrice() { return price.get(); }
+    public DoubleProperty priceProperty() { return price; }
 
-    public int getRam() {
-        return ram;
-    }
-
-    public int getStorageCapacity() {
-        return storageCapacity;
-    }
-
-    public String getRearCamera() {
-        return rearCamera;
-    }
-
-    public String getFrontCamera() {
-        return frontCamera;
-    }
-
-    public String getBattery() {
-        return battery;
-    }
-
-    public String getChargingTechnology() {
-        return chargingTechnology;
-    }
-
-    public String getConnectivity() {
-        return connectivity;
-    }
-
-    public String getDesignAndMaterial() {
-        return designAndMaterial;
-    }
-
-    public double getPrice() {
-        return price;
-    }
+    // Setters
+    public void setBrand(String brand) { this.brand.set(brand); }
+    public void setModel(String model) { this.model.set(model); }
+    public void setRam(int ram) { this.ram.set(ram); }
+    public void setPrice(double price) { this.price.set(price); }
 }

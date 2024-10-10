@@ -9,7 +9,6 @@ public class Product {
     private IntegerProperty ram;
     private DoubleProperty price;
 
-    // Constructor không cần productId (do CSDL sẽ tự tạo ID)
     public Product(String brand, String model, int ram, double price) {
         this.productId = new SimpleIntegerProperty();  // ID sẽ được lấy từ CSDL khi thêm vào
         this.brand = new SimpleStringProperty(brand);

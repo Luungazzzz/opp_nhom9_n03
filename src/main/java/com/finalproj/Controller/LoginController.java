@@ -47,7 +47,6 @@ public class LoginController {
     private void saveLoginToFile(String username, String pwd) {
     }
 
-    // Kiểm tra thông tin người dùng trong database
     private boolean isValidUser(String username, String password) {
         String query = "SELECT * FROM users WHERE username = ? AND password = ?";
         try (Connection conn = Database.getConnection();

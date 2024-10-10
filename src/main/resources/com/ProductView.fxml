@@ -39,7 +39,7 @@
         <Label layoutX="350.0" layoutY="430.0" text="Giá (VND):" />
         <TextField fx:id="priceField" layoutX="450.0" layoutY="430.0" prefWidth="150.0" />
 
-        <!-- Nút để thêm, sửa, xóa sản phẩm -->
+
         <Button layoutX="157.0" layoutY="478.0" mnemonicParsing="false" onAction="#handleAddProduct" prefWidth="100.0" text="Thêm" />
         <Button layoutX="301.0" layoutY="478.0" mnemonicParsing="false" onAction="#handleEditProduct" prefWidth="100.0" text="Sửa" />
         <Button layoutX="467.0" layoutY="477.0" mnemonicParsing="false" onAction="#handleDeleteProduct" prefWidth="100.0" text="Xóa" />

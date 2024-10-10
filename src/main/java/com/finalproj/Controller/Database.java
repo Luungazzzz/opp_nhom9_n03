@@ -7,7 +7,6 @@ import java.sql.SQLException;
 
     public class Database {
 
-        // Khai báo biến kết nối cơ sở dữ liệu
         private static final String URL = "jdbc:mysql://localhost:3306/store_management";
         private static final String USER = "root";
         private static final String PASSWORD = "291220";
@@ -15,7 +14,6 @@ import java.sql.SQLException;
         public static Connection getConnection() {
 
             try {
-                // Tải driver MySQL
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 // Kết nối đến cơ sở dữ liệu
                 Connection connect = DriverManager.getConnection(URL, USER, PASSWORD);

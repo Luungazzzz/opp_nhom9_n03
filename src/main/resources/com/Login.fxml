@@ -11,7 +11,7 @@
     <!-- Title Label -->
     <Label layoutX="147.0" layoutY="47.0" prefHeight="50.0" prefWidth="227.0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #0073e6;" text="Đăng Nhập" />
 
-    <!-- Username Field -->
+
     <Label layoutX="50.0" layoutY="126.0" text="Tên đăng nhập:" />
     <TextField fx:id="account" layoutX="150.0" layoutY="122.0" promptText="Tên đăng nhập" />
 

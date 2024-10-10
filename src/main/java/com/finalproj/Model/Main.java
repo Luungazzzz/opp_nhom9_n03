@@ -16,7 +16,7 @@ import javafx.stage.Stage;
                 primaryStage.setScene(new Scene(root));
                 primaryStage.show();
             } catch (Exception e) {
-                e.printStackTrace(); // In lỗi ra console để kiểm tra
+                e.printStackTrace();
             }
         }
 

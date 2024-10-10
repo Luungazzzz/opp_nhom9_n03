@@ -50,7 +50,6 @@ public class CustomerController {
         loadCustomers();
     }
 
-    // Tải danh sách khách hàng từ database
     private void loadCustomers() {
         customerList.clear(); // Xóa danh sách cũ trước khi tải mới
         String query = "SELECT * FROM customers";

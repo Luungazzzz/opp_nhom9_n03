@@ -18,7 +18,6 @@ public class Invoice {
         this.totalPrice = new SimpleDoubleProperty(totalPrice);
     }
 
-    // Getters and Property methods
     public int getId() { return id.get(); }
     public IntegerProperty idProperty() { return id; }
 

@@ -23,7 +23,7 @@
         <TextField fx:id="phoneNumberField" layoutX="350.0" layoutY="370.0" promptText="Số điện thoại" />
         <TextField fx:id="emailField" layoutX="500.0" layoutY="370.0" promptText="Email" />
 
-        <!-- Bảng hiển thị thông tin khách hàng -->
+
         <TableView fx:id="customerTable" layoutX="50.0" layoutY="60.0" prefHeight="300.0" prefWidth="700.0" onMouseClicked="#showCustomerDetails">
             <columns>
                 <TableColumn fx:id="colCustomerId" prefWidth="50.0" text="ID" />

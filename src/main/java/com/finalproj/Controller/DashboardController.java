@@ -12,7 +12,6 @@ import java.io.IOException;
 
 public class DashboardController {
 
-    // Xử lý sự kiện khi nhấn vào nút "Quản lý khách hàng"
     @FXML
     private void handleManageCustomer(ActionEvent event) {
         switchScene(event, "/com/CustomerView.fxml");

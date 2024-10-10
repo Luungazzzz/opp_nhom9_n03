@@ -41,7 +41,6 @@ public class InvoiceController {
     public void initialize() {
         invoiceList = FXCollections.observableArrayList();
 
-        // Liên kết cột với thuộc tính
         colInvoiceId.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
         colInvoiceCustomerId.setCellValueFactory(cellData -> cellData.getValue().customerIdProperty().asObject());
         colInvoiceProductId.setCellValueFactory(cellData -> cellData.getValue().productIdProperty());

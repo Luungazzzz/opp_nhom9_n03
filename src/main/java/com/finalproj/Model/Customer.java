@@ -17,7 +17,7 @@ public class Customer {
         this.email = new SimpleStringProperty(email);
     }
 
-    // Getters và Setters cho các Property
+
     public int getId() {
         return id.get();
     }

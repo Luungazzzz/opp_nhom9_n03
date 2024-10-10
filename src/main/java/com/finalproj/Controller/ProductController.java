@@ -140,7 +140,6 @@ public class ProductController {
                 return;
             }
 
-            // Kiểm tra sản phẩm đã tồn tại hay chưa
             if (isProductExist(brand, model, ram, price)) {
                 showAlert("Lỗi", "Sản phẩm đã tồn tại. Vui lòng thêm sản phẩm khác.");
                 return;

@@ -34,14 +34,6 @@ public class LoginController {
         } else {
             showAlert("Đăng nhập thất bại", "Tên đăng nhập hoặc mật khẩu không đúng.");
         }
-
-        // Kiểm tra thông tin đăng nhập từ database
-       // if (isValidUser(username, pwd)) {
-       //     showAlert("Đăng nhập thành công", "Chào mừng bạn, " + username + "!"); // Hiển thị thông báo thành công
-       //     switchScene(event, "/com/Dashboard.fxml");
-        //} else {
-        //    showAlert("Đăng nhập thất bại", "Tên đăng nhập hoặc mật khẩu không đúng.");
-       // }
     }
 
     private void saveLoginToFile(String username, String pwd) {

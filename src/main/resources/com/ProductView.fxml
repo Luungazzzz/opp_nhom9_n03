@@ -12,12 +12,12 @@
     <children>
         <Label layoutX="278.0" layoutY="16.0" prefHeight="39.0" prefWidth="215.0" text="Quản Lý Sản Phẩm" textFill="#2E8B57">
             <font>
-                <Font size="24.0" />
+                <Font name="System Bold" size="24.0" />
             </font>
         </Label>
 
         <!-- Bảng hiển thị thông tin sản phẩm -->
-        <TableView fx:id="productTable" layoutX="50.0" layoutY="77.0" prefHeight="282.0" prefWidth="700.0">
+        <TableView fx:id="productTable" layoutX="50.0" layoutY="85.0" prefHeight="285.0" prefWidth="700.0">
             <columns>
                 <TableColumn fx:id="colProductId" prefWidth="103.20004272460938" text="Mã Sản Phẩm" />
                 <TableColumn fx:id="colBrand" prefWidth="131.19998168945312" text="Hãng" />
@@ -27,22 +27,22 @@
             </columns>
         </TableView>
 
-        <Label layoutX="75.0" layoutY="391.0" text="Hãng:" />
-        <TextField fx:id="brandField" layoutX="148.0" layoutY="387.0" prefWidth="150.0" />
+        <Label layoutX="123.0" layoutY="387.0" text="Hãng:" />
+        <TextField fx:id="brandField" layoutX="196.0" layoutY="383.0" prefWidth="150.0" />
 
-        <Label layoutX="77.0" layoutY="439.0" text="Mẫu:" />
-        <TextField fx:id="modelField" layoutX="148.0" layoutY="430.0" prefWidth="150.0" />
+        <Label layoutX="125.0" layoutY="435.0" text="Mẫu:" />
+        <TextField fx:id="modelField" layoutX="196.0" layoutY="426.0" prefWidth="150.0" />
 
-        <Label layoutX="351.0" layoutY="391.0" text="RAM (GB):" />
-        <TextField fx:id="ramField" layoutX="450.0" layoutY="387.0" prefWidth="150.0" />
+        <Label layoutX="399.0" layoutY="387.0" text="RAM (GB):" />
+        <TextField fx:id="ramField" layoutX="498.0" layoutY="383.0" prefWidth="150.0" />
 
-        <Label layoutX="350.0" layoutY="430.0" text="Giá (VND):" />
-        <TextField fx:id="priceField" layoutX="450.0" layoutY="430.0" prefWidth="150.0" />
+        <Label layoutX="398.0" layoutY="426.0" text="Giá (VND):" />
+        <TextField fx:id="priceField" layoutX="498.0" layoutY="426.0" prefWidth="150.0" />
 
 
-        <Button layoutX="157.0" layoutY="478.0" mnemonicParsing="false" onAction="#handleAddProduct" prefWidth="100.0" text="Thêm" />
-        <Button layoutX="301.0" layoutY="478.0" mnemonicParsing="false" onAction="#handleEditProduct" prefWidth="100.0" text="Sửa" />
-        <Button layoutX="467.0" layoutY="477.0" mnemonicParsing="false" onAction="#handleDeleteProduct" prefWidth="100.0" text="Xóa" />
-        <Button layoutX="670.0" layoutY="36.0" mnemonicParsing="false" onAction="#handleBackToDashboard" prefWidth="100.0" text="Quay lại" />
+        <Button layoutX="196.0" layoutY="460.0" mnemonicParsing="false" onAction="#handleAddProduct" prefWidth="100.0" text="Thêm" />
+        <Button layoutX="376.0" layoutY="460.0" mnemonicParsing="false" onAction="#handleEditProduct" prefWidth="100.0" text="Sửa" />
+        <Button layoutX="548.0" layoutY="460.0" mnemonicParsing="false" onAction="#handleDeleteProduct" prefWidth="100.0" text="Xóa" />
+        <Button layoutX="50.0" layoutY="55.0" mnemonicParsing="false" onAction="#handleBackToDashboard" prefHeight="26.0" prefWidth="78.0" text="&lt; Quay lại" />
     </children>
 </AnchorPane>

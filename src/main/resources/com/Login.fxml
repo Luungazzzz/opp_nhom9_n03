@@ -9,17 +9,19 @@
 
 <AnchorPane prefHeight="326.0" prefWidth="489.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.finalproj.Controller.LoginController">
     <!-- Title Label -->
-    <Label layoutX="147.0" layoutY="47.0" prefHeight="50.0" prefWidth="227.0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #0073e6;" text="Đăng Nhập" />
+    <Label layoutX="176.0" layoutY="43.0" prefHeight="50.0" prefWidth="227.0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #0073e6;" text="Đăng Nhập" />
 
 
-    <Label layoutX="50.0" layoutY="126.0" text="Tên đăng nhập:" />
-    <TextField fx:id="account" layoutX="150.0" layoutY="122.0" promptText="Tên đăng nhập" />
+    <Label layoutX="76.0" layoutY="126.0" text="Tên đăng nhập:" />
+    <TextField fx:id="account" layoutX="176.0" layoutY="122.0" promptText="Tên đăng nhập" />
 
     <!-- Password Field -->
-    <Label layoutX="50.0" layoutY="172.0" text="Mật khẩu:" />
-    <PasswordField fx:id="password" layoutX="150.0" layoutY="168.0" promptText="Mật khẩu" />
-
-    <!-- Login Button -->
-    <Button layoutX="150.0" layoutY="226.0" onAction="#handleLogin" text="Đăng nhập" />
-   <TextFlow layoutX="261.0" layoutY="214.0" prefHeight="50.0" prefWidth="150.0" />
+    <Label layoutX="76.0" layoutY="172.0" text="Mật khẩu:" />
+    <PasswordField fx:id="password" layoutX="176.0" layoutY="168.0" promptText="Mật khẩu" />
+   <TextFlow layoutX="261.0" layoutY="214.0" prefHeight="50.0" prefWidth="150.0">
+      <children>
+      
+          <!-- Login Button -->
+          <Button onAction="#handleLogin" text="Đăng nhập" />
+      </children></TextFlow>
 </AnchorPane>

@@ -10,19 +10,15 @@ import javafx.stage.Stage;
         @Override
         public void start(Stage primaryStage) {
             try {
-                // Tải file FXML của Login
                 Parent root = FXMLLoader.load(getClass().getResource("/com/Login.fxml"));
-                primaryStage.setTitle("Quản lý cửa hàng");
+                primaryStage.setTitle("Quản lý cửa hàng điện thoại di động");
                 primaryStage.setScene(new Scene(root));
                 primaryStage.show();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-
-        public static void main(String[] args) {
-            launch(args);
-        }
     }
+
 
 

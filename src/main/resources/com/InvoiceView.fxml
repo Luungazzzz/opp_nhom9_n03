@@ -1,34 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.finalproj.Controller.InvoiceController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.finalproj.Controller.InvoiceController">
     <children>
-        <Label layoutX="321.0" layoutY="22.0" text="Quản Lý Hóa Đơn" textAlignment="CENTER" textFill="#246479">
+        <Label layoutX="275.0" layoutY="14.0" prefHeight="74.0" prefWidth="255.0" text="Quản Lý Hóa Đơn" textAlignment="CENTER" textFill="SEAGREEN">
             <font>
-                <Font size="20.0" />
+                <Font name="System Bold" size="20.0" />
             </font>
         </Label>
 
-        <TableView fx:id="invoiceTable" layoutX="50.0" layoutY="60.0" prefHeight="300.0" prefWidth="700.0">
+        <!-- Thay đổi TextField thành ComboBox để chọn khách hàng và sản phẩm -->
+        <Label layoutX="50.0" layoutY="119.0" text="Mã Khách hàng:" />
+        <ComboBox fx:id="customerComboBox" layoutX="150.0" layoutY="115.0" prefHeight="18.0" prefWidth="150.0" />
+
+        <Label layoutX="50.0" layoutY="159.0" text="Mã Sản phẩm:" />
+        <ComboBox fx:id="productComboBox" layoutX="150.0" layoutY="154.0" prefHeight="26.0" prefWidth="150.0" />
+
+        <Label layoutX="50.0" layoutY="199.0" text="Số lượng:" />
+        <TextField fx:id="quantityField" layoutX="150.0" layoutY="194.0" />
+
+        <Label layoutX="50.0" layoutY="239.0" text="Tổng tiền:" />
+        <TextField fx:id="totalPriceField" layoutX="150.0" layoutY="234.0" />
+
+        <!-- TableView hiển thị hóa đơn -->
+        <TableView fx:id="invoiceTable" layoutX="50.0" layoutY="275.0" prefHeight="150.0" prefWidth="600.0">
             <columns>
-                <TableColumn fx:id="colInvoiceId" prefWidth="122.39996337890625" text="Mã Hóa đơn" />
-                <TableColumn fx:id="colCustomerId" prefWidth="136.0" text="Mã Khách hàng" />
-                <TableColumn fx:id="colProductId" prefWidth="162.39996337890625" text="Mã Sản phẩm" />
-                <TableColumn fx:id="colQuantity" prefWidth="141.5999755859375" text="Số lượng" />
-                <TableColumn fx:id="colTotalPrice" prefWidth="140.0001220703125" text="Tổng tiền" />
+                <TableColumn fx:id="colInvoiceId" prefWidth="103.20001983642578" text="Mã Hóa đơn" />
+                <TableColumn fx:id="colInvoiceCustomerId" prefWidth="111.199951171875" text="Mã Khách hàng" />
+                <TableColumn fx:id="colInvoiceProductId" prefWidth="135.20001220703125" text="Mã Sản phẩm" />
+                <TableColumn fx:id="colInvoiceQuantity" prefWidth="127.20004272460938" text="Số lượng" />
+                <TableColumn fx:id="colInvoiceTotalPrice" prefWidth="124.0" text="Tổng tiền" />
             </columns>
         </TableView>
+
         <!-- Nút để thêm, sửa, xóa hóa đơn -->
-        <Button layoutX="100.0" layoutY="400.0" mnemonicParsing="false" onAction="#handleAddInvoice" prefWidth="100.0" text="Thêm" />
-        <Button layoutX="271.0" layoutY="400.0" mnemonicParsing="false" onAction="#handleEditInvoice" prefWidth="100.0" text="Sửa" />
-        <Button layoutX="607.0" layoutY="400.0" mnemonicParsing="false" onAction="#handleDeleteInvoice" prefWidth="100.0" text="Xóa" />
-        <!-- Nút để xuất hóa đơn -->
-        <Button layoutX="436.0" layoutY="400.0" mnemonicParsing="false" onAction="#handleExportInvoice" prefWidth="100.0" text="Xuất Hóa Đơn" />
+        <Button layoutX="54.0" layoutY="437.0" mnemonicParsing="false" onAction="#handleAddInvoice" prefWidth="100.0" text="Thêm" />
+        <Button layoutX="225.0" layoutY="437.0" mnemonicParsing="false" onAction="#handleEditInvoice" prefWidth="100.0" text="Sửa" />
+        <Button layoutX="549.0" layoutY="437.0" mnemonicParsing="false" onAction="#handleDeleteInvoice" prefWidth="100.0" text="Xóa" />
+        <Button layoutX="380.0" layoutY="437.0" mnemonicParsing="false" onAction="#handleExportInvoice" prefWidth="100.0" text="Xuất Hóa Đơn" />
+        <Button layoutX="50.0" layoutY="76.0" mnemonicParsing="false" onAction="#handleBackToDashboard" prefHeight="26.0" prefWidth="76.0" text="&lt; Quay lại" />
     </children>
 </AnchorPane>

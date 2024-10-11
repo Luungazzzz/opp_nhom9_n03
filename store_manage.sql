@@ -26,9 +26,9 @@ CREATE TABLE products (
 CREATE TABLE invoices (
     id INT AUTO_INCREMENT PRIMARY KEY,
     customer_id INT,
-    product_id VARCHAR(50),
+    product_id INT,
     quantity INT,
-    total_price DECIMAL(10, 2),
+    total_price DECIMAL(20, 2),
     invoice_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (customer_id) REFERENCES customers(id),
     FOREIGN KEY (product_id) REFERENCES products(product_id)

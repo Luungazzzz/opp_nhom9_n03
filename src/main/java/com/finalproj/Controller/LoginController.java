@@ -1,5 +1,6 @@
 package com.finalproj.Controller;
 
+import com.finalproj.Database.Database;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

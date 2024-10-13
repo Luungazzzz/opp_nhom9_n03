@@ -3,11 +3,12 @@ module example.deloy {
     requires javafx.fxml;
     requires java.sql;
 
-    // Mở gói com.finalproj cho JavaFX
     opens com.finalproj.Controller to javafx.fxml;
-    opens com.finalproj.Model to javafx.base; // Nếu bạn sử dụng các lớp Model trong JavaFX
+    opens com.finalproj.Model to javafx.base;
+    opens com.finalproj.View to javafx.fxml;
 
     // Xuất gói com.finalproj
     exports com.finalproj.Controller;
     exports com.finalproj.Model;
+    exports com.finalproj.View;
 }

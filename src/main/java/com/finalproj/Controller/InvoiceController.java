@@ -1,5 +1,6 @@
 package com.finalproj.Controller;
 
+import com.finalproj.Database.Database;
 import com.finalproj.Model.Invoice;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

@@ -54,6 +54,8 @@
 
 <h3>2. Biểu đồ Sequence diagram</h3>
 
+- Biểu đồ trình tự UML với Chức năng chính
+
 ![sequence diagram](https://github.com/user-attachments/assets/719e9722-34ee-4d31-9343-74a49ec612ca)
 
 ---

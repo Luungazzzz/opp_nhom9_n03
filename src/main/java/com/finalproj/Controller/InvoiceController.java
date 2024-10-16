@@ -18,6 +18,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -345,15 +347,48 @@ public class InvoiceController {
         Invoice selectedInvoice = invoiceTable.getSelectionModel().getSelectedItem();
         if (selectedInvoice != null) {
             try {
+                // Định dạng thời gian hiện tại
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                LocalDateTime now = LocalDateTime.now();
 
-                String filePath = "src/main/resources/Files/Invoice.txt";
-//                String filePath = "Invoice.txt";
+                // Lấy thông tin khách hàng và sản phẩm từ CSDL
+                String customerQuery = "SELECT name, address FROM customers WHERE id = ?";
+                String productQuery = "SELECT model FROM products WHERE product_id = ?";
+
+                String customerName = "";
+                String customerAddress = "";
+                String productName = "";
+
+                try (Connection conn = Database.getConnection()) {
+                    // Lấy thông tin khách hàng
+                    try (PreparedStatement stmt = conn.prepareStatement(customerQuery)) {
+                        stmt.setInt(1, selectedInvoice.getCustomerId());
+                        ResultSet rs = stmt.executeQuery();
+                        if (rs.next()) {
+                            customerName = rs.getString("name");
+                            customerAddress = rs.getString("address");
+                        }
+                    }
+
+                    // Lấy thông tin sản phẩm
+                    try (PreparedStatement stmt = conn.prepareStatement(productQuery)) {
+                        stmt.setString(1, selectedInvoice.getProductId());
+                        ResultSet rs = stmt.executeQuery();
+                        if (rs.next()) {
+                            productName = rs.getString("model");
+                        }
+                    }
+                }
+
+                String filePath = "src/main/resources/Files/Invoice.txt";  // Đường dẫn file xuất
 
                 // Ghi thông tin hóa đơn vào file
                 try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) { // Mở file ở chế độ append
                     writer.write("HÓA ĐƠN #" + selectedInvoice.getId() + "\n");
-                    writer.write("Mã khách hàng: " + selectedInvoice.getCustomerId() + "\n");
-                    writer.write("Mã sản phẩm: " + selectedInvoice.getProductId() + "\n");
+                    writer.write("Thời gian: " + dtf.format(now) + "\n");  // Ghi thời gian hiện tại
+                    writer.write("Tên khách hàng: " + customerName + "\n");
+                    writer.write("Địa chỉ: " + customerAddress + "\n");
+                    writer.write("Sản phẩm: " + productName + "\n");  // Ghi model sản phẩm
                     writer.write("Số lượng: " + selectedInvoice.getQuantity() + "\n");
                     writer.write("Tổng tiền: " + currencyFormat.format(selectedInvoice.getTotalPrice()) + "\n");
                     writer.write("-----------------------------\n");
@@ -364,13 +399,12 @@ public class InvoiceController {
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                showAlert("Lỗi", "Đường dẫn tệp không đúng hoặc không thể ghi vào tệp: " + e.getMessage());
+                showAlert("Lỗi", "Không thể xuất hóa đơn: " + e.getMessage());
             }
         } else {
             showAlert("Lỗi", "Vui lòng chọn một hóa đơn để xuất.");
         }
     }
-
     // Tải danh sách hóa đơn từ database
     private void loadInvoices() {
         invoiceList.clear();

@@ -1,24 +1,8 @@
 HÓA ĐƠN #2
-Mã khách hàng: 15
-Mã sản phẩm: 2
+Thời gian: 2024/10/16 23:50:50
+Tên khách hàng: Lê Thị Dương
+Địa chỉ: Thanh hóa
+Sản phẩm: samsung galaxy s23 ultra
 Số lượng: 2
 Tổng tiền: 64,000,000.00 VND
------------------------------
-HÓA ĐƠN #3
-Mã khách hàng: 15
-Mã sản phẩm: 3
-Số lượng: 2
-Tổng tiền: 46,000,000.00 VND
------------------------------
-HÓA ĐƠN #3
-Mã khách hàng: 15
-Mã sản phẩm: 3
-Số lượng: 3
-Tổng tiền: 69,000,000.00 VND
------------------------------
-HÓA ĐƠN #4
-Mã khách hàng: 15
-Mã sản phẩm: 3
-Số lượng: 1
-Tổng tiền: 23,000,000.00 VND
 -----------------------------

@@ -10,8 +10,7 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.finalproj.Controller.CustomerController">
     <children>
-        <!-- Tiêu đề -->
-        <Label layoutX="292.0" layoutY="14.0" prefHeight="50.0" prefWidth="215.0" text="Quản Lý Khách Hàng" textFill="#2E8B57">
+        <Label layoutX="299.0" layoutY="14.0" prefHeight="50.0" prefWidth="215.0" text="Quản Lý Khách Hàng" textFill="#2E8B57">
             <font>
                 <Font name="System Bold" size="20.0" />
             </font>
@@ -22,9 +21,11 @@
         <TextField fx:id="addressField" layoutX="161.0" layoutY="406.0" prefHeight="26.0" prefWidth="168.0" promptText="Địa chỉ" />
         <TextField fx:id="phoneNumberField" layoutX="484.0" layoutY="369.0" prefHeight="26.0" prefWidth="175.0" promptText="Số điện thoại" />
         <TextField fx:id="emailField" layoutX="484.0" layoutY="406.0" prefHeight="26.0" prefWidth="175.0" promptText="Email" />
+        <TextField fx:id="searchField" layoutX="535.0" layoutY="64.0" prefWidth="150.0" />
+        <Button layoutX="685.0" layoutY="64.0" onAction="#handleSearchCustomer" text="Tìm kiếm" />
 
-
-        <TableView fx:id="customerTable" layoutX="50.0" layoutY="79.0" onMouseClicked="#showCustomerDetails" prefHeight="269.0" prefWidth="700.0">
+        <!-- Bảng hiển thị khách hàng -->
+        <TableView fx:id="customerTable" layoutX="50.0" layoutY="91.0" onMouseClicked="#showCustomerDetails" prefHeight="269.0" prefWidth="700.0">
             <columns>
                 <TableColumn fx:id="colCustomerId" prefWidth="50.0" text="ID" />
                 <TableColumn fx:id="colCustomerName" prefWidth="150.0" text="Tên" />
@@ -38,15 +39,13 @@
         <Button layoutX="161.0" layoutY="449.0" mnemonicParsing="false" onAction="#handleAddCustomer" prefWidth="100.0" text="Thêm" />
         <Button layoutX="357.0" layoutY="449.0" mnemonicParsing="false" onAction="#handleEditCustomer" prefWidth="100.0" text="Sửa" />
         <Button layoutX="559.0" layoutY="449.0" mnemonicParsing="false" onAction="#handleDeleteCustomer" prefWidth="100.0" text="Xóa" />
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
-         <children>
-      
-              <!-- Nút quay lại màn hình chính (dashboard) -->
-              <Button layoutX="53.0" layoutY="46.0" mnemonicParsing="false" onAction="#handleBackToDashboard" text="&lt; Quay lại" />
-         </children></AnchorPane>
-      <Label layoutX="108.0" layoutY="361.0" prefHeight="41.0" prefWidth="46.0" text="Họ tên:" />
-      <Label layoutX="108.0" layoutY="398.0" prefHeight="41.0" prefWidth="46.0" text="Địa chỉ:" />
-      <Label layoutX="386.0" layoutY="361.0" prefHeight="42.0" prefWidth="78.0" text="Số điện thoại:" />
-      <Label layoutX="386.0" layoutY="397.0" prefHeight="42.0" prefWidth="78.0" text="Địa chỉ email:" />
+
+        <Button layoutX="50.0" layoutY="51.0" mnemonicParsing="false" onAction="#handleBackToDashboard" text="&lt; Quay lại" />
+
+        <!-- Label mô tả các trường nhập liệu -->
+        <Label layoutX="108.0" layoutY="361.0" prefHeight="41.0" prefWidth="46.0" text="Họ tên:" />
+        <Label layoutX="108.0" layoutY="398.0" prefHeight="41.0" prefWidth="46.0" text="Địa chỉ:" />
+        <Label layoutX="386.0" layoutY="361.0" prefHeight="42.0" prefWidth="78.0" text="Số điện thoại:" />
+        <Label layoutX="386.0" layoutY="397.0" prefHeight="42.0" prefWidth="78.0" text="Địa chỉ email:" />
     </children>
 </AnchorPane>

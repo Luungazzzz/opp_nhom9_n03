@@ -29,7 +29,6 @@ public class DashboardController {
         switchScene(event, "/com/InvoiceView.fxml");
     }
 
-    // Xử lý sự kiện khi nhấn vào nút "Đăng xuất"
     @FXML
     private void handleLogout(ActionEvent event) {
         switchScene(event, "/com/Login.fxml");

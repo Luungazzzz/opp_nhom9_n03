@@ -49,10 +49,12 @@
 
 <h3>1. Biểu đồ Class digram </h3>
 
-![Ảnh chụp màn hình 2024-09-22 170849](https://github.com/user-attachments/assets/73442e24-d9fa-42f9-8a60-2a5873a8e72d)
+![Ảnh chụp màn hình 2024-10-15 190900](https://github.com/user-attachments/assets/e8e2230c-974a-48b4-9e5e-7d773449a7bb)
 
 
 <h3>2. Biểu đồ Sequence diagram</h3>
+
+- Biểu đồ trình tự UML với Chức năng chính
 
 ![sequence diagram](https://github.com/user-attachments/assets/719e9722-34ee-4d31-9343-74a49ec612ca)
 

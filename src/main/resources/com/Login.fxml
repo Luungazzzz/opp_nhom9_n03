@@ -4,24 +4,30 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane prefHeight="326.0" prefWidth="489.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.finalproj.Controller.LoginController">
-    <!-- Title Label -->
-    <Label layoutX="176.0" layoutY="43.0" prefHeight="50.0" prefWidth="227.0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #0073e6;" text="Đăng Nhập" />
+<AnchorPane prefHeight="405.0" prefWidth="709.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.finalproj.Controller.LoginController">
 
 
-    <Label layoutX="76.0" layoutY="126.0" text="Tên đăng nhập:" />
-    <TextField fx:id="account" layoutX="176.0" layoutY="122.0" promptText="Tên đăng nhập" />
+    <Label layoutX="452.0" layoutY="85.0" prefHeight="47.0" prefWidth="198.0" text="Đăng Nhập" textFill="#1682f5">
+      <font>
+         <Font name="System Bold" size="28.0" />
+      </font></Label>
+    <TextField fx:id="account" layoutX="452.0" layoutY="165.0" prefHeight="26.0" prefWidth="182.0" promptText="Tên đăng nhập" />
+    <PasswordField fx:id="password" layoutX="452.0" layoutY="223.0" prefHeight="26.0" prefWidth="182.0" promptText="Mật khẩu" />
+   <TextFlow layoutX="261.0" layoutY="214.0" prefHeight="15.0" prefWidth="122.0" />
 
-    <!-- Password Field -->
-    <Label layoutX="76.0" layoutY="172.0" text="Mật khẩu:" />
-    <PasswordField fx:id="password" layoutX="176.0" layoutY="168.0" promptText="Mật khẩu" />
-   <TextFlow layoutX="261.0" layoutY="214.0" prefHeight="50.0" prefWidth="150.0">
-      <children>
-      
           <!-- Login Button -->
-          <Button onAction="#handleLogin" text="Đăng nhập" />
-      </children></TextFlow>
+    <Button layoutX="578.0" layoutY="278.0" onAction="#handleLogin" text="Đăng nhập" />
+   <ImageView fitHeight="463.0" fitWidth="414.0" layoutX="-69.0" layoutY="-2.0">
+      <image>
+         <Image url="@../Images/Giaodien.png" />
+      </image>
+   </ImageView>
+   <Label layoutX="355.0" layoutY="223.0" prefHeight="26.0" prefWidth="91.0" text="Mật khẩu" />
+   <Label layoutX="352.0" layoutY="165.0" prefHeight="26.0" prefWidth="91.0" text="Tên đăng nhập:" />
 </AnchorPane>

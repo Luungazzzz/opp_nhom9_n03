@@ -43,7 +43,6 @@ public class InvoiceController {
     private TableColumn<Invoice, String> colInvoiceProductId;
     @FXML
     private TableColumn<Invoice, Double> colInvoiceTotalPrice;
-
     @FXML
     private Button addInvoiceBtn, editInvoiceBtn, deleteInvoiceBtn, exportInvoiceBtn, backButton;
 
@@ -156,8 +155,36 @@ public class InvoiceController {
             totalPriceField.setText("");  // Nếu số lượng không hợp lệ, không tính tổng tiền
         }
     }
+    @FXML
+    private TextField searchField;
 
-    // Xử lý thêm hóa đơn
+    @FXML
+    private void handleSearchInvoice() {
+        String searchTerm = searchField.getText();  // Lấy giá trị tìm kiếm từ searchField
+
+        // Kiểm tra nếu searchTerm trống thì hiển thị tất cả các hóa đơn
+        if (searchTerm == null || searchTerm.isEmpty()) {
+            invoiceTable.setItems(invoiceList);  // Đưa lại danh sách đầy đủ
+            return;
+        }
+
+        // Tạo danh sách hóa đơn lọc theo điều kiện tìm kiếm
+        ObservableList<Invoice> filteredInvoices = FXCollections.observableArrayList();
+        for (Invoice invoice : invoiceList) {
+            if (invoice.getId() == Integer.parseInt(searchTerm)) {
+                filteredInvoices.add(invoice);
+            }
+        }
+
+        // Nếu không tìm thấy hóa đơn
+        if (filteredInvoices.isEmpty()) {
+            showAlert("Thông báo", "Không tìm thấy hóa đơn với mã này.");
+        }
+
+        // Cập nhật bảng với danh sách lọc
+        invoiceTable.setItems(filteredInvoices);
+    }
+
     @FXML
     private void handleAddInvoice() {
         try {
@@ -166,6 +193,13 @@ public class InvoiceController {
             int quantity = Integer.parseInt(quantityField.getText());
             double totalPrice = Double.parseDouble(totalPriceField.getText().replace(" VND", "").replace(",", ""));
 
+            // Kiểm tra số lượng sản phẩm trong kho
+            if (!isProductAvailable(productId, quantity)) {
+                showAlert("Lỗi", "Số lượng sản phẩm trong kho không đủ để xuất hóa đơn.");
+                return;  // Dừng lại nếu số lượng không đủ
+            }
+
+            // Truy vấn thêm hóa đơn vào bảng invoices
             String query = "INSERT INTO invoices (customer_id, product_id, quantity, total_price) VALUES (?, ?, ?, ?)";
             try (Connection conn = Database.getConnection();
                  PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -174,6 +208,9 @@ public class InvoiceController {
                 stmt.setInt(3, quantity);
                 stmt.setDouble(4, totalPrice);
                 stmt.executeUpdate();
+
+                // Cập nhật số lượng sản phẩm sau khi tạo hóa đơn
+                updateProductQuantity(productId, quantity);
 
                 // Cập nhật lại bảng hiển thị
                 loadInvoices();
@@ -188,6 +225,59 @@ public class InvoiceController {
             showAlert("Lỗi", "Đã xảy ra lỗi khi thêm hóa đơn: " + e.getMessage());
         }
     }
+
+    // Kiểm tra số lượng sản phẩm có đủ trong kho
+    private boolean isProductAvailable(String productId, int quantityRequested) {
+        String query = "SELECT quantity FROM products WHERE product_id = ?";
+        try (Connection conn = Database.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, productId);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                int availableQuantity = rs.getInt("quantity");
+                return availableQuantity >= quantityRequested;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Lỗi", "Không thể kiểm tra số lượng sản phẩm.");
+        }
+        return false;
+    }
+
+    // Hàm cập nhật số lượng sản phẩm sau khi tạo hóa đơn
+    // Hàm cập nhật số lượng sản phẩm sau khi tạo hóa đơn
+    private void updateProductQuantity(String productId, int quantitySold) {
+        String query = "SELECT quantity FROM products WHERE product_id = ?";
+        try (Connection conn = Database.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            // Kiểm tra số lượng sản phẩm hiện tại trong kho
+            stmt.setString(1, productId);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                int availableQuantity = rs.getInt("quantity");
+
+                // Nếu số lượng còn lại sau khi bán nhỏ hơn 0, không cho phép thực hiện
+                if (availableQuantity - quantitySold < 0) {
+                    showAlert("Lỗi", "Số lượng sản phẩm trong kho không đủ.");
+                    return;  // Ngừng việc giảm số lượng sản phẩm
+                }
+
+                // Nếu đủ, cập nhật số lượng sản phẩm
+                String updateQuery = "UPDATE products SET quantity = quantity - ? WHERE product_id = ?";
+                try (PreparedStatement updateStmt = conn.prepareStatement(updateQuery)) {
+                    updateStmt.setInt(1, quantitySold);
+                    updateStmt.setString(2, productId);
+                    updateStmt.executeUpdate();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Lỗi", "Không thể cập nhật số lượng sản phẩm.");
+        }
+    }
+
+
 
     // Xử lý sửa hóa đơn
     @FXML

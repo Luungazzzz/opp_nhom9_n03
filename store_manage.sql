@@ -19,6 +19,7 @@ CREATE TABLE products (
     brand VARCHAR(100),
     model VARCHAR(100),
     ram INT,
+    quantity int,
     price DECIMAL(20, 2)
 
 );

@@ -13,7 +13,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,36 +22,30 @@ import java.util.Locale;
 public class ProductController {
 
     @FXML
-    private TextField brandField, modelField, ramField, priceField;
+    private TextField brandField, modelField, ramField, priceField, quantityField, searchField;
 
     @FXML
     private TableView<Product> productTable;
 
     @FXML
-    private TableColumn<Product, Integer> colProductId;
+    private TableColumn<Product, Integer> colProductId, colRAM, colQuantity;
     @FXML
     private TableColumn<Product, String> colBrand, colModel;
-    @FXML
-    private TableColumn<Product, Integer> colRAM;
     @FXML
     private TableColumn<Product, Double> colPrice;
 
     @FXML
-    private Button addProductBtn, editProductBtn, deleteProductBtn, backButton;
+    private Button addButton, editButton, deleteButton, backButton;
 
-    private ObservableList<Product> productList;
-
-    // Định dạng tiền tệ cho Việt Nam
+    private ObservableList<Product> productList = FXCollections.observableArrayList();
     private final NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
 
     public void initialize() {
-        productList = FXCollections.observableArrayList();
         colProductId.setCellValueFactory(cellData -> cellData.getValue().productIdProperty().asObject());
         colBrand.setCellValueFactory(cellData -> cellData.getValue().brandProperty());
         colModel.setCellValueFactory(cellData -> cellData.getValue().modelProperty());
         colRAM.setCellValueFactory(cellData -> cellData.getValue().ramProperty().asObject());
 
-        // Định dạng giá để hiển thị
         colPrice.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
         colPrice.setCellFactory(column -> new TableCell<Product, Double>() {
             @Override
@@ -61,39 +54,19 @@ public class ProductController {
                 if (empty || price == null) {
                     setText(null);
                 } else {
-                    setText(String.format("%,.0f VND", price));  // Hiển thị giá trị định dạng tiền tệ
+                    setText(String.format("%,.0f", price));  // Hiển thị định dạng số mà không có chữ "đồng"
                 }
             }
         });
 
+        colQuantity.setCellValueFactory(cellData -> cellData.getValue().quantityProperty().asObject());
+
         loadProducts();
 
-        // Lắng nghe sự kiện chọn sản phẩm trong bảng và hiển thị chi tiết sản phẩm
         productTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showProductDetails(newValue));
     }
 
-    // Phương thức kiểm tra xem sản phẩm đã tồn tại hay chưa
-    private boolean isProductExist(String brand, String model, int ram, double price) {
-        String query = "SELECT COUNT(*) FROM products WHERE brand = ? AND model = ? AND ram = ? AND price = ?";
-        try (Connection conn = Database.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setString(1, brand);
-            stmt.setString(2, model);
-            stmt.setInt(3, ram);
-            stmt.setDouble(4, price);
-            ResultSet rs = stmt.executeQuery();
-
-            // Nếu có ít nhất 1 sản phẩm trùng, trả về true
-            if (rs.next() && rs.getInt(1) > 0) {
-                return true;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;  // Không tìm thấy sản phẩm
-    }
-
-    // Tải danh sách sản phẩm từ database
+    // Tải danh sách sản phẩm từ cơ sở dữ liệu
     private void loadProducts() {
         productList.clear();
         String query = "SELECT * FROM products";
@@ -107,8 +80,9 @@ public class ProductController {
                 String model = rs.getString("model");
                 int ram = rs.getInt("ram");
                 double price = rs.getDouble("price");
+                int quantity = rs.getInt("quantity");
 
-                Product product = new Product(productId, brand, model, ram, price);
+                Product product = new Product(productId, brand, model, ram, price, quantity);
                 productList.add(product);
             }
             productTable.setItems(productList);
@@ -117,17 +91,46 @@ public class ProductController {
         }
     }
 
-    // Hiển thị thông tin sản phẩm đã chọn lên các trường nhập liệu
-    private void showProductDetails(Product selectedProduct) {
-        if (selectedProduct != null) {
-            brandField.setText(selectedProduct.getBrand());
-            modelField.setText(selectedProduct.getModel());
-            ramField.setText(String.valueOf(selectedProduct.getRam()));
-            priceField.setText(String.valueOf(selectedProduct.getPrice()));
+    // Hiển thị chi tiết sản phẩm đã chọn
+    private void showProductDetails(Product product) {
+        if (product != null) {
+            brandField.setText(product.getBrand());
+            modelField.setText(product.getModel());
+            ramField.setText(String.valueOf(product.getRam()));
+
+            // Định dạng giá để hiển thị trên TextField mà không có ký tự 'E'
+            priceField.setText(String.format("%,.0f", product.getPrice()));
+
+            quantityField.setText(String.valueOf(product.getQuantity()));
+        }
+    }
+    // Tìm kiếm sản phẩm theo mã sản phẩm
+    @FXML
+    private void handleSearchProduct() {
+        String searchId = searchField.getText();
+        if (searchId == null || searchId.isEmpty()) {
+            productTable.setItems(productList);
+            return;
+        }
+
+        ObservableList<Product> filteredProducts = FXCollections.observableArrayList();
+        try {
+            int searchProductId = Integer.parseInt(searchId);
+            for (Product product : productList) {
+                if (product.getProductId() == searchProductId) {
+                    filteredProducts.add(product);
+                }
+            }
+            if (filteredProducts.isEmpty()) {
+                showAlert("Thông báo", "Không tìm thấy sản phẩm với Mã Sản Phẩm này.");
+            }
+            productTable.setItems(filteredProducts);
+        } catch (NumberFormatException e) {
+            showAlert("Lỗi", "Mã Sản Phẩm phải là số hợp lệ.");
         }
     }
 
-    // Xử lý thêm sản phẩm
+    // Thêm sản phẩm vào cơ sở dữ liệu
     @FXML
     private void handleAddProduct() {
         try {
@@ -135,79 +138,71 @@ public class ProductController {
             String model = modelField.getText();
             int ram = Integer.parseInt(ramField.getText());
             double price = Double.parseDouble(priceField.getText());
+            int quantity = Integer.parseInt(quantityField.getText());
 
-            // Kiểm tra dữ liệu đầu vào
-            if (!isValidInput()) {
-                return;
-            }
-
-            if (isProductExist(brand, model, ram, price)) {
-                showAlert("Lỗi", "Sản phẩm đã tồn tại. Vui lòng thêm sản phẩm khác.");
-                return;
-            }
-
-            // Thêm sản phẩm vào cơ sở dữ liệu nếu sản phẩm chưa tồn tại
-            String query = "INSERT INTO products (brand, model, ram, price) VALUES (?, ?, ?, ?)";
+            String query = "INSERT INTO products (brand, model, ram, price, quantity) VALUES (?, ?, ?, ?, ?)";
             try (Connection conn = Database.getConnection();
                  PreparedStatement stmt = conn.prepareStatement(query)) {
                 stmt.setString(1, brand);
                 stmt.setString(2, model);
                 stmt.setInt(3, ram);
                 stmt.setDouble(4, price);
+                stmt.setInt(5, quantity);
                 stmt.executeUpdate();
+
+                showAlert("Thành công", "Sản phẩm đã được thêm thành công.");
+                loadProducts();
                 clearFields();
-                loadProducts();  // Tải lại danh sách sản phẩm
-                showAlert("Thành công", "Sản phẩm đã được thêm thành công!");
             }
-        } catch (NumberFormatException e) {
-            showAlert("Lỗi", "RAM và giá phải là số hợp lệ.");
         } catch (Exception e) {
             e.printStackTrace();
             showAlert("Lỗi", "Đã xảy ra lỗi khi thêm sản phẩm.");
         }
     }
 
-    // Xử lý lưu thông tin sản phẩm sau khi chỉnh sửa
+    // Sửa thông tin sản phẩm
+    // Sửa thông tin sản phẩm
     @FXML
     private void handleEditProduct() {
-        try {
-            Product selectedProduct = productTable.getSelectionModel().getSelectedItem();
-            if (selectedProduct != null) {
+        Product selectedProduct = productTable.getSelectionModel().getSelectedItem();
+        if (selectedProduct != null) {
+            try {
                 String brand = brandField.getText();
                 String model = modelField.getText();
                 int ram = Integer.parseInt(ramField.getText());
-                double price = Double.parseDouble(priceField.getText());
 
-                if (!isValidInput()) {
-                    return;
-                }
+                // Loại bỏ dấu phẩy trước khi chuyển đổi thành double
+                String priceText = priceField.getText().replace(",", "");
+                double price = Double.parseDouble(priceText);
 
-                String query = "UPDATE products SET brand = ?, model = ?, ram = ?, price = ? WHERE product_id = ?";
+                int quantity = Integer.parseInt(quantityField.getText());
+
+                String query = "UPDATE products SET brand = ?, model = ?, ram = ?, price = ?, quantity = ? WHERE product_id = ?";
                 try (Connection conn = Database.getConnection();
                      PreparedStatement stmt = conn.prepareStatement(query)) {
                     stmt.setString(1, brand);
                     stmt.setString(2, model);
                     stmt.setInt(3, ram);
                     stmt.setDouble(4, price);
-                    stmt.setInt(5, selectedProduct.getProductId());
+                    stmt.setInt(5, quantity);
+                    stmt.setInt(6, selectedProduct.getProductId());
                     stmt.executeUpdate();
 
-                    showAlert("Thành công", "Cập nhật thông tin sản phẩm thành công!");
+                    showAlert("Thành công", "Thông tin sản phẩm đã được cập nhật.");
+                    loadProducts();
                     clearFields();
-                    loadProducts();  // Tải lại danh sách sản phẩm
                 }
-            } else {
-                showAlert("Lỗi", "Vui lòng chọn một sản phẩm để sửa.");
+            } catch (Exception e) {
+                e.printStackTrace();
+                showAlert("Lỗi", "Đã xảy ra lỗi khi sửa sản phẩm.");
             }
-        } catch (NumberFormatException e) {
-            showAlert("Lỗi", "RAM và giá phải là số hợp lệ.");
-        } catch (Exception e) {
-            e.printStackTrace();
-            showAlert("Lỗi", "Đã xảy ra lỗi khi chỉnh sửa sản phẩm.");
+        } else {
+            showAlert("Lỗi", "Vui lòng chọn một sản phẩm để sửa.");
         }
     }
 
-    // Xử lý xóa sản phẩm
+
+    // Xóa sản phẩm
     @FXML
     private void handleDeleteProduct() {
         Product selectedProduct = productTable.getSelectionModel().getSelectedItem();
@@ -218,9 +213,9 @@ public class ProductController {
                 stmt.setInt(1, selectedProduct.getProductId());
                 stmt.executeUpdate();
 
-                showAlert("Thành công", "Xóa sản phẩm thành công!");
-                clearFields();  // Xóa các trường nhập liệu
-                loadProducts();  // Tải lại danh sách sản phẩm
+                showAlert("Thành công", "Sản phẩm đã được xóa.");
+                loadProducts();
+                clearFields();
             } catch (Exception e) {
                 e.printStackTrace();
                 showAlert("Lỗi", "Đã xảy ra lỗi khi xóa sản phẩm.");
@@ -230,42 +225,42 @@ public class ProductController {
         }
     }
 
-    // Xử lý quay lại màn hình chính
-    @FXML
-    private void handleBackToDashboard(ActionEvent event) {
-        switchScene(event, "/com/Dashboard.fxml");
+    // Giảm số lượng sản phẩm khi xuất hóa đơn
+    public void reduceProductQuantity(int productId, int quantitySold) {
+        String query = "UPDATE products SET quantity = quantity - ? WHERE product_id = ?";
+        try (Connection conn = Database.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, quantitySold);
+            stmt.setInt(2, productId);
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Lỗi", "Không thể cập nhật số lượng sản phẩm.");
+        }
     }
 
-    // Phương thức chuyển cảnh giao diện
-    private void switchScene(ActionEvent event, String fxmlFilePath) {
+    // Xóa thông tin các trường nhập liệu
+    private void clearFields() {
+        brandField.clear();
+        modelField.clear();
+        ramField.clear();
+        priceField.clear();
+        quantityField.clear();
+    }
+
+    // Quay lại màn hình chính
+    @FXML
+    private void handleBackToDashboard(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource(fxmlFilePath));
+            Parent root = FXMLLoader.load(getClass().getResource("/com/Dashboard.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            showAlert("Lỗi", "Không thể chuyển cảnh: " + e.getMessage());
+            showAlert("Lỗi", "Không thể quay lại màn hình chính.");
         }
-    }
-
-    // Kiểm tra dữ liệu đầu vào
-    private boolean isValidInput() {
-        String brand = brandField.getText();
-        String model = modelField.getText();
-        if (brand.isEmpty() || model.isEmpty()) {
-            showAlert("Lỗi", "Vui lòng điền đầy đủ thông tin sản phẩm.");
-            return false;
-        }
-        try {
-            Integer.parseInt(ramField.getText());
-            Double.parseDouble(priceField.getText());
-        } catch (NumberFormatException e) {
-            showAlert("Lỗi", "RAM và giá phải là số hợp lệ.");
-            return false;
-        }
-        return true;
     }
 
     // Hiển thị thông báo
@@ -275,13 +270,4 @@ public class ProductController {
         alert.setContentText(content);
         alert.showAndWait();
     }
-
-    // Xóa dữ liệu trong các trường nhập liệu
-    private void clearFields() {
-        brandField.clear();
-        modelField.clear();
-        ramField.clear();
-        priceField.clear();
-    }
 }
-

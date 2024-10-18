@@ -103,7 +103,7 @@ public class CustomerController {
 
         // Kiểm tra trùng số điện thoại
         if (isPhoneNumberDuplicate(phone)) {
-            showAlert("Lỗi", "Số điện thoại (Khách hàng) đã tồn tại trong hệ thống.");
+            showAlert("Lỗi", "Số điện thoại đã tồn tại trong hệ thống, vui lòng kiểm tra lại!");
             return;
         }
 
@@ -115,6 +115,7 @@ public class CustomerController {
             stmt.setString(3, phone);
             stmt.setString(4, email);
             stmt.executeUpdate();
+            showAlert("Thành công", "Thêm khách hàng thành công!");
             clearFields(); // Xóa dữ liệu trong các trường nhập liệu
             loadCustomers(); // Tải lại danh sách khách hàng
         } catch (Exception e) {

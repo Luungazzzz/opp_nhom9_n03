@@ -392,7 +392,7 @@ public class InvoiceController {
                     writer.write("Số lượng: " + selectedInvoice.getQuantity() + "\n");
                     writer.write("Tổng tiền: " + currencyFormat.format(selectedInvoice.getTotalPrice()) + "\n");
                     writer.write("-----------------------------\n");
-                    showAlert("Thành công", "Hóa đơn đã được xuất thành công vào file " + filePath);
+                    showAlert("Thành công", "Hóa đơn đã được xuất thành công, mời bạn kiểm tra!" );
                 } catch (IOException e) {
                     e.printStackTrace();
                     showAlert("Lỗi", "Không thể xuất hóa đơn: " + e.getMessage());

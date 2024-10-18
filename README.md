@@ -117,13 +117,14 @@
  + Giao diện đầu tiên
  
 
-![image](https://github.com/user-attachments/assets/479d8f3b-233e-4458-926d-498983a10828)
+![image](https://github.com/user-attachments/assets/76df609d-833d-4f10-ba36-e5968e56144f)
+
 
 
  + Giao diện chức năng chính
    
+![image](https://github.com/user-attachments/assets/d09439a7-b18a-4708-a533-8dca8eea7ee8)
 
-![image](https://github.com/user-attachments/assets/a0b3a034-c4c2-4475-b028-c1734f917350)
 
 
  + Dữ liệu login

@@ -20,16 +20,19 @@
 
 
     - Thêm/Sửa/Xóa Sản phẩm: Người dùng có thể dễ dàng quản lý danh sách sản phẩm, bao gồm các thông tin chi tiết như tên, giá cả,..
-    - Tìm kiếm và Lọc Sản phẩm: Hỗ trợ tìm kiếm nhanh chóng và lọc sản phẩm theo nhiều tiêu chí khác nhau để thuận tiện trong việc quản lý.
+    - Tìm kiếm: Hỗ trợ tìm kiếm nhanh chóng để thuận tiện trong việc quản lý.
   
 + Quản lý Khách hàng:
     - Quản lý Thông tin Khách hàng: Lưu trữ và cập nhật thông tin khách hàng như tên, số điện thoại và địa chỉ, giúp theo dõi mối quan hệ với khách hàng.
     - Danh sách Khách hàng: Hiển thị danh sách khách hàng một cách trực quan, dễ dàng cho việc truy xuất thông tin.
+    - Tìm kiếm: cho phép tìm kiếm khách hành bằng số điện thoại, thuận tiện cho việc truy xuất và quản lý
 
 
 + Quản lý Hóa đơn:
     - Tạo Hóa đơn Mới: Dễ dàng tạo hóa đơn cho khách hàng, tự động tính toán tổng số tiền cần thanh toán.
     - Lưu trữ và Truy xuất Hóa đơn: Lưu trữ tất cả hóa đơn đã phát hành và cho phép tìm kiếm, xem lại lịch sử giao dịch một cách hiệu quả.
+    - Sửa, xoá: dễ dàng sửa xoá nếu hoá đơn lỗi hay có sai xót
+    - Tìm kiếm: cho phép tìm kiếm hoá đơn theo ID để dễ dàng sửa, xoá, xuất
  
 + Dữ liệu
     - Dữ liệu được lưu trữ trong Database
@@ -38,9 +41,9 @@
 
 <h2> Thành Viên Nhóm </h2>
 
-   - Lê Thị Dương -	23010351
+   - Lê Thị Dương -	23010351 Phát triển dự án toàn diện
      
-   - Lưu Thị Ngà  - 22010181
+   - Lưu Thị Ngà  - 22010181 
 
 
 ---

@@ -62,8 +62,8 @@
 |     |                                                          |Lưu Thị Ngà | 50% |
 |  6  |    Lên video demo dự án                                  |Lê Thị Dương| 60% |
 |     |                                                          |Lưu Thị Ngà | 40% |
-|  77  |    Viết báo cáo                                          |Lê Thị Dương| 20% |
-|     |                                                          |Lưu Thị Ngà | 80% |
+|  77  |    Viết báo cáo                                          |Lê Thị Dương| 15% |
+|     |                                                          |Lưu Thị Ngà | 85% |
 
 
 

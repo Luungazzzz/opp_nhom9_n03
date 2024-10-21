@@ -56,8 +56,8 @@
 |  2  |    Vẽ lưu đồ thuật toán hệ thống                         |Lê Thị Dương| 50% |
 |     |                                                          |Lưu Thị Ngà | 50% |
 |  3  |    Thiết kế cơ sở dữ liệu                                |Lê Thị Dương| 100%|
-|  4  |    Phát triển code                                       |Lê Thị Dương| 65% |
-|     |                                                          |Lưu Thị Ngà | 35% |
+|  4  |    Phát triển code                                       |Lê Thị Dương| 75% |
+|     |                                                          |Lưu Thị Ngà | 25% |
 |  5  |    kiểm thử hệ thống                                     |Lê Thị Dương| 50% |
 |     |                                                          |Lưu Thị Ngà | 50% |
 |  6  |    Lên video demo dự án                                  |Lê Thị Dương| 60% |

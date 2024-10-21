@@ -41,7 +41,7 @@
 
 <h2> Thành Viên Nhóm </h2>
 
-   - Lê Thị Dương -	23010351 Phát triển dự án toàn diện
+   - Lê Thị Dương -	23010351 Xây dựng code, Phát triển dự án toàn diện
      
    - Lưu Thị Ngà  - 22010181 
 

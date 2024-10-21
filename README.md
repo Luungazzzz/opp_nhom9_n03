@@ -56,6 +56,11 @@
 
 
 <h3>2. Biểu đồ Sequence diagram</h3>
+- Biểu đồ trình tự UML với chức năng đăng nhập
+
+![6D3F4E44-F540-4F4A-A265-4A380F29AB49](https://github.com/user-attachments/assets/0098b0d6-6cdd-44eb-aa3d-a0fb1b8c61a6)
+
+
 
 - Biểu đồ trình tự UML với Chức năng chính
 

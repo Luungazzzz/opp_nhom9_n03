@@ -131,5 +131,9 @@
 
 ![image](https://github.com/user-attachments/assets/3c0da441-b469-437e-9c0d-756e25e0fc5a)
 
+ + Xuất hoá đơn ra file
+![IMG_6673](https://github.com/user-attachments/assets/0ad02ebf-ec8a-4717-83f7-3f4ac107138b)
+
+
 
 

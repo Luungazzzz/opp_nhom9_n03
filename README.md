@@ -164,6 +164,13 @@
 ![IMG_6155](https://github.com/user-attachments/assets/e6b44bcb-2601-433b-8926-7d813ba400c2)
 
 
+- Mô hình quan hệ
+
+![IMG_6684](https://github.com/user-attachments/assets/51b5fc6e-144b-4998-b1aa-d4601cdd26b1)
+
+  
+
+
 ---
 
 
